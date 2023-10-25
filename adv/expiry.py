@@ -15,17 +15,20 @@ class ExpirationChecker:
         
        
         expiry_date = datetime.datetime(self.year,self.month, 1)
-        
+        arr = arrow.get(expiry_date).humanize()
+
         if current_date <= expiry_date.date() <= six_months_from_now:
-            arr = arrow.get(expiry_date).humanize()
+            
             print(f"Item expiring : {arr}")
         
-        if current_date <= expiry_date.date() <= three_months_from_now:
-            print(f"Item expiring: {arr}")
         
         if current_date > expiry_date.date():
             print(f"Item expired: {arr}")
+
+
+
     
 
-checker = ExpirationChecker(3, 2024)
+checker = ExpirationChecker(10, 2023)
 exp = checker.check_expiration()
+
